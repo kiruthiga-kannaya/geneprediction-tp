@@ -146,12 +146,12 @@ def predict_genes(sequence: str, start_regex: Pattern, stop_regex: Pattern, shin
     :return: (list) List of [start, stop] position of each predicted genes.
     """
     probable_genes = []
-    position_courante = 0
-    longueur_sequence = len(sequence)
+    pos_actuel = 0
+    longueur_seq = len(sequence)
 
-    while longueur_sequence - position_courante >= min_gap:
+    while longueur_seq - pos_actuel >= min_gap:
         start = find_start(
-            start_regex, sequence, position_courante, longueur_sequence
+            start_regex, sequence, pos_actuel, longueur_seq
         )
 
         if start is None:
@@ -173,13 +173,13 @@ def predict_genes(sequence: str, start_regex: Pattern, stop_regex: Pattern, shin
 
                     probable_genes.append([start + 1, stop + 3])
 
-                    position_courante = stop + 3 + min_gap
+                    pos_actuel = stop + 3 + min_gap
                 else:
-                    position_courante = start + 1
+                    pos_actuel = start + 1
             else:
-                position_courante = start + 1
+                pos_actuel = start + 1
         else:
-            position_courante = start + 1
+            pos_actuel = start + 1
 
     return probable_genes
 
