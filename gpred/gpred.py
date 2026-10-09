@@ -161,9 +161,9 @@ def predict_genes(sequence: str, start_regex: Pattern, stop_regex: Pattern, shin
 
         if stop is not None:
 
-            gene_len = stop + 3 - start
+            gene_longueur = stop + 3 - start
 
-            if gene_len >= min_gene_len:
+            if gene_longueur >= min_gene_len:
                 if has_shine_dalgarno(
                     shine_regex,
                     sequence,
